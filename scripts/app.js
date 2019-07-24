@@ -25,15 +25,6 @@ const users = [
     {name: 'Serj', gender: 'male', salary: '2000'},
 ];
 
-{/* 
-<tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>male</td>
-    <td>1500</td>
-</tr> 
-*/}
-
 const innerTablesRows = users.map((el, i) => {
     const tr = document.createElement('tr');
     
