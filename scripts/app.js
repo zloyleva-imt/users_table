@@ -1,16 +1,3 @@
-// const sum = [...document.querySelectorAll('tr > td:last-child')]
-//     .map(el => Number(el.innerHTML)).reduce((acc, el) => acc+el,0);
-
-
-// const html = document.createElement('div');
-// html.innerText = sum + '$';
-
-// // document.getElementsByClassName('col-12')[0].appendChild(html);
-
-// document.querySelector('table > tbody > tr:last-child > td:last-child')
-// .innerText = sum + '$';
-
-
 const users = [
     {name: 'Mark', gender: 'male', salary: '1500'},
     {name: 'Igor', gender: 'male', salary: '500'},
@@ -25,26 +12,28 @@ const users = [
     {name: 'Serj', gender: 'male', salary: '2000'},
 ];
 
+const createElement = (tag, content) => {
+    const element = document.createElement(tag);
+    element.innerText = content;
+
+    return element;
+}
+
+const appendArray = (htmlEl, arrayEls) => {
+    arrayEls.map(el => htmlEl.appendChild(el))
+    return htmlEl;
+}
+
 const innerTablesRows = users.map((el, i) => {
-    const tr = document.createElement('tr');
+    const index = createElement('th',i + 1);
+    const name = createElement('td',el.name);
+    const gender = createElement('td',el.gender);
+    const salary = createElement('td',el.salary);
     
-    const index = document.createElement('th');
-    index.innerText = i + 1;
-    tr.appendChild(index);
-
-    const name = document.createElement('td');
-    name.innerText = el.name;
-    tr.appendChild(name);
-
-    const gender = document.createElement('td');
-    gender.innerText = el.gender;
-    tr.appendChild(gender);
-
-    const salary = document.createElement('td');
-    salary.innerText = el.salary;
-    tr.appendChild(salary);
-
-    return tr;
+    return appendArray(
+        document.createElement('tr'),
+        [index,name,gender,salary]
+    );
 });
 
 
@@ -62,22 +51,18 @@ innerTablesRows.map(el => tbody.appendChild(el));
 // </thead>
 
 const tr = document.createElement('tr');
-const index = document.createElement('th');
-index.innerText = '#';
+
+const index = createElement('th','#');
 tr.appendChild(index);
 
-const name = document.createElement('th');
-name.innerText = 'Name';
+const name = createElement('th','Name');
 tr.appendChild(name);
 
-const gender = document.createElement('th');
-gender.innerText = 'Gender';
+const gender = createElement('th','Gender');
 tr.appendChild(gender);
 
-const salary = document.createElement('th');
-salary.innerText = 'Salary';
+const salary = createElement('th','Salary');
 tr.appendChild(salary);
-
 
 const thead = document.createElement('thead');
 thead.appendChild(tr);
