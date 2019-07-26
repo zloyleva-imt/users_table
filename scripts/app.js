@@ -41,34 +41,17 @@ const tbody = document.createElement('tbody')
 innerTablesRows.map(el => tbody.appendChild(el));
 
 
-// <thead>
-//    <tr>
-//      <th scope="col">#</th>
-//      <th scope="col">Name</th>
-//      <th scope="col">Gender</th>
-//      <th scope="col">Salary</th>
-//    </tr>
-// </thead>
+const tr = appendArray(document.createElement('tr'),[
+    createElement('th','#'),
+    createElement('th','Name'),
+    createElement('th','Gender'),
+    createElement('th','Salary'),
+]);
 
-const tr = document.createElement('tr');
+const thead = appendArray(document.createElement('thead'),[tr]);
 
-const index = createElement('th','#');
-tr.appendChild(index);
-
-const name = createElement('th','Name');
-tr.appendChild(name);
-
-const gender = createElement('th','Gender');
-tr.appendChild(gender);
-
-const salary = createElement('th','Salary');
-tr.appendChild(salary);
-
-const thead = document.createElement('thead');
-thead.appendChild(tr);
-
-const table = document.createElement('table');
-table.appendChild(thead);
-table.appendChild(tbody);
+const table = appendArray(document.createElement('table'),[
+    thead,tbody
+]);
 
 document.getElementsByClassName('col-12')[0].appendChild(table);
